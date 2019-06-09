@@ -18,6 +18,8 @@ switch($option) {
     case 3: 
         deleteCompany();
         break;
+    default:
+        print "There is only 3 options! Try again";
 }
 
 function deleteCompany() {
