@@ -157,9 +157,3 @@ function validate_phone($phone) {
     return $phone;
 }
 ?>
-
-
-
-
-
-
