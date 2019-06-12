@@ -15,7 +15,7 @@ switch($option) {
     case 2:
         editCompany();
         break;
-    case 3: 
+    case 3:
         deleteCompany();
         break;
     default:
@@ -25,7 +25,7 @@ switch($option) {
 function deleteCompany() {
     $db = new FileDb('db.txt');
     $modelCompany = new ModelCompany($db, TABLE);
-    
+
     print "Enter company ID you want to delete:\n";
     foreach($modelCompany->loadAll() as $company) {
         $ids = trim($company->getId());
@@ -76,7 +76,7 @@ function addCompany() {
     $db = new FileDb('db.txt');
     $modelCompany = new ModelCompany($db, TABLE);
     $company = new Company;
-    
+
     print "Enter your company ID: ";
     $id = fgets(STDIN);
     print "Enter your company name: ";
@@ -115,10 +115,10 @@ function validate_email($email) {
     if (preg_match($pattern, $email)) {
         foreach ($modelCompany->loadAll() as $company) {
             if(trim($company->getEmail()) === $email) {
-                
+
                 print "Email exists or invalid email: ";
                 $email = fgets(STDIN);
-                validate_email(trim($email)); 
+                validate_email(trim($email));
             }
         }
     } else {
@@ -137,9 +137,9 @@ function validate_id($id) {
         if(trim($company->getId()) === $id) {
             return true;
         }
-        
+
     print "Wrong ID:";
-    $id = fgets(STDIN);  
+    $id = fgets(STDIN);
     validate_id(trim($id));
     }
 }
@@ -150,7 +150,7 @@ function validate_phone($phone) {
     } else if (preg_match("/^[+]{1}[3]{1}[7]{1}[0]{1}[6]{1}[0-9]{7}$/", $phone)) {
         return $phone;
     }
-    
+
     print "Wrong phone number! Try again: ";
     $phone = fgets(STDIN);
     validate_phone(trim($phone));
